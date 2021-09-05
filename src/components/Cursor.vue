@@ -39,7 +39,7 @@ const shadows = 1;
 times(shadows, (i) => {
   const opts = {
     selector: `#cursor-follow-${i + 1}`,
-    delayAndDuration: ((i + 1) * 0.1) / shadows,
+    delayAndDuration: ((i + 1) * .125) / shadows,
   };
 
   handleMouseEnterExit(opts.selector, opts.delayAndDuration);

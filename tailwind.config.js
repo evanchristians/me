@@ -3,7 +3,18 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
-      sans: ["Work Sans", "sans-serif"],
+      sans: [
+        "Work Sans",
+        "sans-serif",
+        "-apple-system,BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Arial",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+      ],
     },
     extend: {
       colors: {
@@ -13,8 +24,8 @@ module.exports = {
           900: "#090809",
         },
         tw: {
-          50: "rbga(255, 255, 255, 0.5)" 
-        }
+          50: "rbga(255, 255, 255, 0.5)",
+        },
       },
       fontSize: {
         "5xl": "clamp(2rem, 4vw ,3rem)",
