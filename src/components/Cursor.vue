@@ -15,15 +15,17 @@ const handleMouseEnterExit = (selector, delay = 0) => {
   });
 };
 
-const handleMouseMove = (selector, duration = 0) => {
+const handleMouseMove = (selector, delayAndDuration = 0) => {
   document.addEventListener("mousemove", (ev) => {
     const left = ev.clientX;
     const top = ev.clientY;
     gsap.to(selector, {
       left,
       top,
-      duration,
-      delay: duration,
+      opacity: 1,
+      scale: 1,
+      duration: delayAndDuration,
+      delay: delayAndDuration,
       ease: "power1.out",
     });
   });
@@ -35,8 +37,13 @@ handleMouseMove("#cursor");
 const shadows = 1;
 
 times(shadows, (i) => {
-  handleMouseEnterExit(`#cursor-follow-${i + 1}`, ((i + 1) * 0.1) / shadows);
-  handleMouseMove(`#cursor-follow-${i + 1}`, ((i + 1) * 0.1) / shadows);
+  const opts = {
+    selector: `#cursor-follow-${i + 1}`,
+    delayAndDuration: ((i + 1) * 0.1) / shadows,
+  };
+
+  handleMouseEnterExit(opts.selector, opts.delayAndDuration);
+  handleMouseMove(opts.selector, opts.delayAndDuration);
 });
 </script>
 
@@ -52,7 +59,8 @@ times(shadows, (i) => {
 
 <style lang="scss" scoped>
 .cursor {
-  @apply fixed w-4 h-4 rounded-full bg-primary bg-opacity-70 opacity-0 transform -translate-x-1/2 -translate-y-1/2;
+  @apply fixed w-4 h-4 rounded-full bg-primary bg-opacity-70 opacity-0
+    transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
   z-index: 1;
   &.follow {
     @apply bg-secondary bg-opacity-70;
